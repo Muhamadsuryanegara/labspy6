@@ -154,9 +154,7 @@ elif c. lower() == 'k':
 ```
 ### output
 ![Screenshot (70)](https://user-images.githubusercontent.com/92736847/145682176-4d721989-09f9-48a7-a075-aa837e27aae9.png)
-![Screenshot (71)](https://user-images.githubusercontent.com/92736847/145682177-7fac3590-1140-4f17-89fa-2eaa2d48ccdd.png)
-![Screenshot (76)](https://user-images.githubusercontent.com/92736847/145682173-30f67549-93a7-4aac-81b1-54eb53ff03ae.png)
+![Screenshot (98)](https://user-images.githubusercontent.com/92678339/145718684-097cb381-91af-48e3-b703-a3fd4b0ea286.png)
 
 ### flowchart
-
 ![png](https://user-images.githubusercontent.com/92736847/145682224-31098e61-3ef2-4f3f-872a-6326e133a49d.png)
