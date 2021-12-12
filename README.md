@@ -1,4 +1,8 @@
 # labspy6
+Nama: Muhamad Suryanegara 
+TI.21.A.1
+312110447
+
 ## Latihan 1
 - Ubahlah kode dibawah ini menjadi fungsi menggunakan *lambda*
 
@@ -38,8 +42,8 @@ print(d("Jenab"))
 ```
 
 ### Output
-![Screenshot (77)](https://user-images.githubusercontent.com/92736847/145682096-0a72b00d-b549-4426-bf69-8a07aee35495.png)
-![Screenshot (78)](https://user-images.githubusercontent.com/92736847/145682101-6f69c99d-8947-4168-ae0a-38f301ce19ee.png)
+![Screenshot (99)](https://user-images.githubusercontent.com/92678339/145719504-2ad0c1c2-4b9a-4889-9e9a-eff03f2f1c0e.png)
+![Screenshot (100)](https://user-images.githubusercontent.com/92678339/145719518-916b0ef0-771e-4b2a-bc8e-6982e1ebdd0a.png)
 
 ## Praktikum
   Buat program sederhana dengan mengaplikasikan penggunaan fungsi yang akan menampilkan daftar nilai mahasiswa, dengan ketentuan:
@@ -52,26 +56,30 @@ print(d("Jenab"))
 ### Penjelasan
   Buatlah dictionary yang akan diinput dengan data
 ```bash
-data = {}
+x = {}
 ```
 
   Membuat perulangan dan keterangan untuk pilihan menu
 ```bash
 while True:
-    c = input("\n(L)ihat, (T)ambah, (U)bah), (H)apus, (C)ari, (K)eluar: ")
+    header="PROGRAM INPUT NILAI MAHASISWA"
+    print(header.center(97,"="))
+    print()
+    print("[ (L)ihat, (T)ambah, (U)bah, (H)apus, (C)ari, (K)eluar")
+    c = input("Masukkan Pilihan: ")
 ```
 
 - Menambahkan data yang akan diinput kemudian masuk ke dalam dictionary
 ```bash
-if c.lower() == 't':
-        print("Tambah Data")
-        nama = input("Nama\t\t: ")
-        nim = int(input("NIM\t\t: "))
-        uts = int(input("Nilai UTS\t: "))
-        uas = int(input("Nilai UAS\t: "))
-        tugas = int(input("Nilai Tugas\t: "))
-        akhir = tugas*30/100 + uts*35/100 + uas*35/100
-        data[nama] = nim, uts, uas, tugas, akhir
+if c == 'T' or c == 't':
+        print("TAMBAH DATA")
+        nim = int(input("Masukkan NIM\t\t: "))
+        nama = input("Masukkan Nama\t\t: ")
+        tugas = int(input("Masukkan Nilai Tugas\t: "))
+        uts = int(input("Masukkan Nilai UTS\t: "))
+        uas = int(input("Masukkan Nilai UAS\t: "))
+        akhir = tugas*.3 + uts*.35 + uas*.35
+        x[nama] = nim, uts, uas, tugas, akhir
 ```
 
 Output Menambahkan Data
@@ -79,62 +87,58 @@ Output Menambahkan Data
 
 - Jika ingin menampilkan data dapat menggunakan
 ```py
-elif c.lower() == 'l':
-        if data.items():
-            print("="*78)
-            print("|                               Daftar Mahasiswa                             |")
-            print("="*78)
-            print("|No. | Nama            |       NIM       |  UTS  |  UAS  |  Tugas  |  Akhir  |")
-            print("="*78)
-            i = 0
-            for z in data.items():
-                i += 1
-                print("| {no:2d} | {0:15s} | {1:15d} | {2:5d} | {3:5d} | {4:7d} | {5:7.2f} |"
-                      .format(z[0][:13], z[1][0], z[1][1], z[1][2], z[1][3], z[1][4], no=i))
-            print("=" * 78)
+elif c == 'C' or c == 'c':
+        print("CARI DATA")
+        nama = input("Masukkan Nama : ")
+        if nama in x.keys():
+            print("="*73)
+            print("|                             Daftar Mahasiswa                          |")
+            print("="*73)
+            print("| Nama            |       NIM       |  UTS  |  UAS  |  Tugas  |  Akhir  |")
+            print("="*73)
+            print("| {0:15s} | {1:15d} | {2:5d} | {3:5d} | {4:7d} | {5:7.2f} |"
+                  .format(nama, nim, uts, uas, tugas, akhir))
+            print("="*73)
         else:
-            print("="*78)
-            print("|                               Daftar Mahasiswa                             |")
-            print("="*78)
-            print("|No. | Nama            |       NIM       |  UTS  |  UAS  |  Tugas  |  Akhir  |")
-            print("="*78)
-            print("|                                TIDAK ADA DATA                              |")
-            print("="*78)
+            print("Nama {0} Tidak Ditemukan".format(nama))
+
 ```
 
 Mengubah data dapat menggunakan 
 ```py
-elif c.lower() == 'u':
-        print("Ubah Data")
-        nama = input("Masukkan Nama   : ")
-        if nama in data.keys():
-            nim = int(input("NIM\t\t: "))
-            uts = int(input("Nilai UTS\t: "))
-            uas = int(input("Nilai UAS\t: "))
-            tugas = int(input("Nilai Tugas\t: "))
-            akhir = tugas*30/100 + uts*35/100 + uas*35/100
-            data[nama] = nim, uts, uas, tugas, akhir
+elif c == 'U' or c == 'u':
+        print("UBAH DATA")
+        print("Cari Data Mahasiswa Menggunakan Nama")
+        nama = input("Masukkan Nama Mahasiswa: ")
+        if nama in x.keys():
+            nim = int(input("Masukkan NIM yang benar\t\t: "))
+            tugas = int(input("Masukkan Nilai Tugas yang benar\t: "))
+            uts = int(input("Masukkan Nilai UTS yang benar\t: "))
+            uas = int(input("Masukkan Nilai UAS yang benar\t: "))
+            akhir = tugas*.3 + uts*.35 + uas*.35
+            x[nama] = nim, uts, uas, tugas, akhir
         else:
             print("Nama {0} tidak ditemukan".format(nama))
 ```
 
 - Menghapus data dapat menggunakan
 ```py
-elif c.lower() == 'h':
-        print("Hapus Data")
-        nama = input("Masukkan Nama  : ")
-        if nama in data.keys():
-            del data[nama]
+elif c == 'h' or c == 'H':
+        print("HAPUS DATA")
+        nama = input("Masukkan Nama untuk menghapus: ")
+        if nama in x.keys():
+            del x[nama]
         else:
             print("Nama {0} Tidak Ditemukan".format(nama))
+
 ```
 
 - Mencari data dapat menggunakan
 ```py
- elif c.lower() == 'c':
-        print("Cari Data[case-sensitive]")
+ elif c == 'C' or c == 'c':
+        print("CARI DATA")
         nama = input("Masukkan Nama : ")
-        if nama in data.keys():
+        if nama in x.keys():
             print("="*73)
             print("|                             Daftar Mahasiswa                          |")
             print("="*73)
@@ -153,7 +157,7 @@ elif c. lower() == 'k':
         break
 ```
 ### output
-![Screenshot (70)](https://user-images.githubusercontent.com/92736847/145682176-4d721989-09f9-48a7-a075-aa837e27aae9.png)
+![Screenshot (102)](https://user-images.githubusercontent.com/92678339/145719619-ef075730-e202-4ae4-8c0f-3416d630d46b.png)
 ![Screenshot (98)](https://user-images.githubusercontent.com/92678339/145718684-097cb381-91af-48e3-b703-a3fd4b0ea286.png)
 
 ### flowchart
